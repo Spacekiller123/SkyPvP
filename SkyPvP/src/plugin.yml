@@ -1,0 +1,9 @@
+name: SkyPvP
+main: me.spacekiller.main.SkyPvP
+version: 1.0
+author: Spacekiller
+commands:
+   setskypvpspawn:
+      description: SetSkyPvPSpawn
+   skypvp:
+      description: SkyPvP Warp
