@@ -53,7 +53,7 @@ public class JumpListener implements Listener {
 			p.setFlying(false);
 			p.setVelocity(p.getLocation().getDirection().multiply(0.5D).setY(0.5D));
 			p.setFallDistance(0.0F);
-			p.getLocation().getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDERDRAGON_FLAP, (float) 1.0, -5.0F);
+			p.playSound(p.getLocation(), Sound.ENTITY_ENDERDRAGON_FLAP, 0.1F, -10F);
 			fly.remove(p.getPlayer());
 			jumped = true;
 		}

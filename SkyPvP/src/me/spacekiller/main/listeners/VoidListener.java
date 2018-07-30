@@ -25,9 +25,6 @@ public class VoidListener implements Listener {
 		Player player = event.getPlayer();
 		if ((player.getLocation().getY() <= 0.0D)
 				&& (player.getWorld().getName().equalsIgnoreCase(plugin.getConfig().getString("WorldName")))) {
-			if (!player.isDead()) {
-				player.setHealth(0.0D);
-			}
 			player.setHealth(20.0D);
 			player.setFallDistance(0.0F);
 			World w = Bukkit.getServer().getWorld(plugin.getConfig().getString("WorldName"));

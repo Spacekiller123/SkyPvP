@@ -55,12 +55,6 @@ public class SkyPvP extends JavaPlugin {
 	}
 
 	public void loadConfig() {
-		cfg = getConfig();
-		if (!cfg.contains("JoinMessage"))
-			cfg.addDefault("JoinMessage", true);
-		if (!cfg.contains("LeaveMessage"))
-			cfg.addDefault("LeaveMessage", true);
-		cfg.options().copyDefaults(true);
 		saveConfig();
 	}
 	
