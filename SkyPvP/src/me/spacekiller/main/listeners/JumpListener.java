@@ -32,7 +32,7 @@ public class JumpListener implements Listener {
 		if(e.getPlayer().getGameMode() != GameMode.CREATIVE && !e.getPlayer().isOnGround() && !jumped){
 			e.getPlayer().setAllowFlight(true);
 			fly.add(e.getPlayer());
-		}else if(e.getPlayer().isOnGround()) {
+		}else if(e.getPlayer().isOnGround() && jumped) {
 			jumped = false;
 		}
 	}
