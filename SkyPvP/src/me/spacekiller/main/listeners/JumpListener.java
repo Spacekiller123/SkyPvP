@@ -3,6 +3,7 @@ package me.spacekiller.main.listeners;
 import java.util.ArrayList;
 
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,11 +17,7 @@ import me.spacekiller.main.SkyPvP;
 
 public class JumpListener implements Listener {
 	
-	ArrayList<Player> fly = new ArrayList<Player>();
-
 	SkyPvP plugin;
-	
-	boolean jumped = false;
 	
 	public JumpListener(SkyPvP plugin) {
 		this.plugin = plugin;
@@ -29,14 +26,14 @@ public class JumpListener implements Listener {
 	
 	@EventHandler
 	public void onJump(PlayerMoveEvent e) {
-		if(e.getPlayer().getGameMode() != GameMode.CREATIVE && !e.getPlayer().isOnGround() && !jumped){
-			e.getPlayer().setAllowFlight(true);
-			fly.add(e.getPlayer());
-		}else if(e.getPlayer().isOnGround() && jumped) {
-			jumped = false;
+		Player p = e.getPlayer();
+		if(p.getGameMode() != GameMode.CREATIVE){
+			if(p.getLocation().add(0,-1,0).getBlock().getType() != Material.AIR) {
+				p.setAllowFlight(true);
+			}
 		}
 	}
-	
+
 	@EventHandler
 	public void OnDamage(EntityDamageEvent e){
 		if(e.getCause().equals(DamageCause.FALL)){
@@ -47,15 +44,13 @@ public class JumpListener implements Listener {
 	@EventHandler
 	public void onFly(PlayerToggleFlightEvent e){
 		Player p = e.getPlayer();
-		if(p.getGameMode() != GameMode.CREATIVE && fly.contains(p) && !jumped){
+		if(p.getGameMode() != GameMode.CREATIVE){
 			e.setCancelled(true);
 			p.setAllowFlight(false);
 			p.setFlying(false);
 			p.setVelocity(p.getLocation().getDirection().multiply(0.5D).setY(0.5D));
 			p.setFallDistance(0.0F);
 			p.playSound(p.getLocation(), Sound.ENTITY_ENDERDRAGON_FLAP, 0.1F, -10F);
-			fly.remove(p.getPlayer());
-			jumped = true;
 		}
 	}
 	

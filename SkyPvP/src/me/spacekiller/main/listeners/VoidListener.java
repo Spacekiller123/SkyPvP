@@ -33,7 +33,6 @@ public class VoidListener implements Listener {
 			double z = plugin.getConfig().getDouble("spawn.z");
 			double fy = plugin.getConfig().getDouble("spawn.yaw");
 			player.teleport(new Location(w, x, y, z,(float) fy, 0));
-			player.teleport(player.getWorld().getSpawnLocation());
 			player.setExp(0.0F);
 			player.setLevel(0);
 			player.setFoodLevel(20);

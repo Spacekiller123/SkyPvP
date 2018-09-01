@@ -7,3 +7,8 @@ commands:
       description: SetSkyPvPSpawn
    skypvp:
       description: SkyPvP Warp
+   umwandeln:
+      description: Umwandeln
+   setitem:
+      description: Set item
+   
